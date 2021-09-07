@@ -1,0 +1,11 @@
+{
+  "name": "ckb-nft-extension",
+  "version": "1.0.0",
+  "description": "The extension of Nervos CKB NFT",
+  "main": "index.js",
+  "author": "duanyytop@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^4.4.2"
+  }
+}
