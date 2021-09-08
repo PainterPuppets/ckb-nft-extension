@@ -1,9 +1,7 @@
-import { DataFormat } from './types'
-
-const dataFormatToJson = (dataFormat: DataFormat) => JSON.stringify(dataFormat)
+import { dataFormatToJson } from '../src/parser'
 
 const run = () => {
-  const dataFormat: DataFormat = {
+  const dataFormat: NFTComponents.DataFormat = {
     type: {
       enum: [
         {

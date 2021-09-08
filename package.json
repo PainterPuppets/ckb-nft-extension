@@ -1,16 +1,25 @@
 {
   "name": "ckb-nft-extension",
+  "private": true,
   "version": "1.0.0",
   "description": "The extension of Nervos CKB NFT",
   "main": "index.ts",
   "author": "duanyytop@gmail.com",
   "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "tsc": "lerna run tsc",
+    "build:lib": "lerna run tsc",
+    "clean:lib": "rimraf **/packages/*/lib",
+    "publish": "lerna run tsc && lerna publish --from-package",
     "start": "ts-node src/index.ts",
-    "build": "tsc -p .",
-    "lint": "eslint src/**/*.ts --fix"
+    "lint": "eslint packages/**/*.ts --fix"
   },
   "dependencies": {
+    "@nervosnetwork/ckb-sdk-utils": "^0.43.0",
     "node-fetch": "^3.0.0"
   },
   "devDependencies": {
@@ -23,6 +32,7 @@
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.2",
+    "lerna": "^4.0.0",
     "prettier": "^2.3.2",
     "ts-node": "^10.2.1",
     "tslib": "^2.3.1",

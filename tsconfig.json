@@ -7,15 +7,10 @@
     "module": "commonjs",
     "lib": [
       "es6",
-      "dom"
     ],
-    "outDir": "dist", /* Redirect output structure to the directory. */
-    "rootDir": "src",
+    "outDir": "lib", /* Redirect output structure to the directory. */
     "types": [
       "node"
-    ],
-    "typeRoots": [
-      "./"
     ],
     "moduleResolution": "node",
     "experimentalDecorators": true,
@@ -24,12 +19,7 @@
     "importHelpers": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "skipLibCheck": true, /* Skip type checking of declaration files. */
-    "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
   },
-  "include": [
-    "src/**/*.ts", "src/types.ts", "index.ts",
-  ],
   "exclude": [
     "node_modules"
   ]
