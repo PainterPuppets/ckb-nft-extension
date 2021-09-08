@@ -2,10 +2,27 @@
   "name": "ckb-nft-extension",
   "version": "1.0.0",
   "description": "The extension of Nervos CKB NFT",
-  "main": "index.js",
+  "main": "index.ts",
   "author": "duanyytop@gmail.com",
   "license": "MIT",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "build": "tsc -p .",
+    "lint": "eslint src/**/*.ts --fix"
+  },
   "dependencies": {
+    "node-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.7.13",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.3.2",
+    "ts-node": "^10.2.1",
+    "tslib": "^2.3.1",
     "typescript": "^4.4.2"
   }
 }
