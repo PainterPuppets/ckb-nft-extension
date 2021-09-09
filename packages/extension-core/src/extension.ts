@@ -1,7 +1,6 @@
 import { remove0x } from '.'
 import { MAINNET_CLASS_TYPE_CODE_HASH, TESTNET_CLASS_TYPE_CODE_HASH } from './constants'
 import { getCells, getLiveCell, getTimestampByHash, getTransactions } from './rpc'
-import { NftCell, NftTx } from './types'
 
 const parseClassId = (tokenId: HexString): HexString => remove0x(tokenId).substring(0, 48)
 const parseTid = (tokenId: HexString): number => parseInt(remove0x(tokenId).substring(48), 16)
@@ -19,7 +18,7 @@ export class Extension {
     this.classId = classId
   }
 
-  public async getNftCells(): Promise<NftCell[]> {
+  public async getNftCells(): Promise<NFTComponents.NftCell[]> {
     const cells = await getCells(this.ckbIndexer, this.getNftType())
     return cells.map(cell => ({
       tokenId: cell.output.type?.args,
@@ -30,10 +29,10 @@ export class Extension {
     }))
   }
 
-  public async getNftTransactions(): Promise<NftTx[]> {
+  public async getNftTransactions(): Promise<NFTComponents.NftTx[]> {
     let txs = await getTransactions(this.ckbIndexer, this.getNftType())
     txs = txs.filter(tx => tx.ioType === 'output')
-    let nftTxs: NftTx[] = []
+    let nftTxs: NFTComponents.NftTx[] = []
     for (const tx of txs) {
       const outPoint = {
         txHash: tx.txHash,

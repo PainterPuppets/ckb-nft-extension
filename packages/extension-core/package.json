@@ -1,0 +1,18 @@
+{
+  "name": "@nervina/extension-core",
+  "version": "0.1.0",
+  "author": "duanyytop@gmail.com",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "example": "ts-node example/index.ts"
+  },
+  "dependencies": {
+    "@nervina/extension-types": "0.1.0",
+    "tslib": "^2.3.1"
+  }
+}
