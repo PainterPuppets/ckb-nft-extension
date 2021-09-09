@@ -1,5 +1,21 @@
 import { hexToBytes, bytesToHex } from '@nervosnetwork/ckb-sdk-utils'
 import { TextEncoder, TextDecoder } from 'util'
+import camelcaseKeys from 'camelcase-keys'
+
+export const toCamelCase = <T>(object: any): T | null => {
+  try {
+    return JSON.parse(
+      JSON.stringify(
+        camelcaseKeys(object, {
+          deep: true,
+        }),
+      ),
+    ) as T
+  } catch (error) {
+    console.error(error)
+  }
+  return null
+}
 
 export const remove0x = (hex?: string) => {
   if (hex?.startsWith('0x')) {

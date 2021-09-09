@@ -1,20 +1,20 @@
 {
   "name": "ckb-nft-extension",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "The extension of Nervos CKB NFT",
   "author": "duanyytop@gmail.com",
   "license": "MIT",
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
     "example": "ts-node example/index.ts",
     "build": "tsc",
     "lint": "eslint src/**/*.ts --fix"
   },
   "dependencies": {
+    "@nervosnetwork/ckb-sdk-core": "^0.43.0",
     "@nervosnetwork/ckb-sdk-utils": "^0.43.0",
+    "@nervosnetwork/ckb-types": "^0.43.0",
+    "camelcase-keys": "^7.0.0",
     "node-fetch": "^3.0.0"
   },
   "devDependencies": {
