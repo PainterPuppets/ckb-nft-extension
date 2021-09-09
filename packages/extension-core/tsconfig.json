@@ -6,17 +6,16 @@
       "es6",
       "esnext.array"
     ],
-    "typeRoots": [
-      "types",
-      "node_modules/@types",
-      "node_modules"
-    ],
     "types": [
       "@nervina/extension-types",
-      "node"
-    ]
+    ],
+    "typeRoots": [
+      "@nervosnetwork/ckb-types",
+      "@nervina/extension-types",
+      "types"
+    ],
   },
   "include": [
-    "src/**/*.ts",
+    "src", "types"
   ]
 }

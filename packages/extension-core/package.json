@@ -5,11 +5,15 @@
   "license": "MIT",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
   "files": [
-    "lib"
+    "lib",
+    "types"
   ],
   "scripts": {
-    "example": "ts-node example/index.ts"
+    "tsc": "tsc"
   },
   "dependencies": {
     "@nervina/extension-types": "0.1.0",

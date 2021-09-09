@@ -3,7 +3,4 @@
   "compilerOptions": {
     "outDir": "./lib"
   },
-  "include": [
-    "./src"
-  ]
 }

@@ -11,8 +11,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "tsc": "lerna run tsc",
-    "build:lib": "lerna run tsc",
-    "clean:lib": "rimraf **/packages/*/lib",
+    "build": "tsc -b",
     "publish": "lerna run tsc && lerna publish --from-package",
     "lint": "eslint packages/**/*.ts --fix"
   },
