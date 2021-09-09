@@ -6,6 +6,8 @@ declare namespace NFTComponents {
   export type HexString = string
   export type UInt64 = HexString
 
+  export type Hash = HexString
+
   export type Enum = {
     name: string
     values: { [key: string]: UInt8 }
@@ -24,5 +26,10 @@ declare namespace NFTComponents {
   export type DataFormat = {
     type: { enum: Enum[] }
     data: Item[]
+  }
+
+  export type ExtensionFormat = {
+    id: string
+    hash: Hash
   }
 }

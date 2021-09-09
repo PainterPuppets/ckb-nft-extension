@@ -1,7 +1,0 @@
-{
-  "name": "@nervina/extension-types",
-  "version": "1.0.0",
-  "author": "duanyytop@gmail.com",
-  "license": "MIT",
-  "types": "index.d.ts"
-}

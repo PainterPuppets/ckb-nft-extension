@@ -1,4 +1,4 @@
-import { dataFormatToJson } from '../src/parser'
+import { dataFormatToJsonHash } from '../src/parser'
 
 const run = () => {
   const dataFormat: NFTComponents.DataFormat = {
@@ -40,8 +40,8 @@ const run = () => {
       },
     ],
   }
-  const json = dataFormatToJson(dataFormat)
-  console.log(json)
+  const jsonHash = dataFormatToJsonHash(dataFormat)
+  console.log(jsonHash)
 }
 
 run()
