@@ -14,8 +14,9 @@ declare namespace NFTComponents {
     classId: string
     tid: number
     txHash: string
-    timestamp: string
+    timestamp: number
     blockNumber: string
+    lock: CKBComponents.Script
     outPoint: CKBComponents.OutPoint
   }
 }

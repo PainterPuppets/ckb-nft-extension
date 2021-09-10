@@ -89,10 +89,18 @@ export const getLiveCell = async (
   return cell
 }
 
-export const getTimestampByHash = async (ckbNode: string, txHash: HexString): Promise<string> => {
+export const getTxLastWitnessByHash = async (ckbNode: string, txHash: HexString): Promise<HexString> => {
+  const ckb = new CKB(ckbNode)
+  const {
+    transaction: { witnesses },
+  } = await ckb.rpc.getTransaction(txHash)
+  return witnesses[-1]
+}
+
+export const getTimestampByBlockNumber = async (ckbNode: string, blockNumber: HexString): Promise<number> => {
   const ckb = new CKB(ckbNode)
   const {
     header: { timestamp },
-  } = await ckb.rpc.getBlock(txHash)
-  return timestamp
+  } = await ckb.rpc.getBlockByNumber(blockNumber)
+  return parseInt(timestamp)
 }
