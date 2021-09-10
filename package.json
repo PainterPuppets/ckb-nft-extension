@@ -11,6 +11,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna run tsc",
+    "clean:lib": "rimraf **/packages/*/lib",
     "publish": "lerna run tsc && lerna publish --from-package",
     "lint": "eslint packages/**/*.ts --fix"
   },
@@ -18,8 +19,7 @@
     "@nervosnetwork/ckb-sdk-core": "^0.43.0",
     "@nervosnetwork/ckb-sdk-utils": "^0.43.0",
     "@nervosnetwork/ckb-types": "^0.43.0",
-    "camelcase-keys": "^7.0.0",
-    "node-fetch": "^3.0.0"
+    "camelcase-keys": "^7.0.0"
   },
   "devDependencies": {
     "@types/node": "^16.7.13",
@@ -33,7 +33,6 @@
     "husky": "^7.0.2",
     "lerna": "^4.0.0",
     "prettier": "^2.3.2",
-    "ts-node": "^10.2.1",
     "tslib": "^2.3.1",
     "typescript": "^4.4.2"
   }

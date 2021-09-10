@@ -1,11 +1,11 @@
-import { remove0x, witnessJsonToDataFormat } from '.'
+import { hexToHash, parseCharacteristicFromNftData, parseExtInfoFromClassData, remove0x } from '.'
 import {
   MAINNET_CLASS_TYPE_CODE_HASH,
   MAINNET_NFT_TYPE_CODE_HASH,
   TESTNET_CLASS_TYPE_CODE_HASH,
   TESTNET_NFT_TYPE_CODE_HASH,
 } from './constants'
-import { getCells, getLiveCell, getTimestampByBlockNumber, getTransactions, getTxLastWitnessByHash } from './rpc'
+import { getCells, getLiveCell, getTimestampByBlockNumber, getTransactions, getTxByHash } from './rpc'
 
 const parseClassId = (tokenId: HexString): HexString => remove0x(tokenId).substring(0, 48)
 const parseTid = (tokenId: HexString): number => parseInt(remove0x(tokenId).substring(48), 16)
@@ -15,9 +15,8 @@ export class Extension {
   private ckbIndexer: string
   private network: Network
   private classId: HexString
-  private dataFormat: DataFormat
 
-  public constructor(ckbNode: string, ckbIndexer: string, network: Network, classId: HexString) {
+  public constructor({ ckbNode, ckbIndexer, network, classId }: NFTComponents.ExtensionProps) {
     this.ckbNode = ckbNode
     this.ckbIndexer = ckbIndexer
     this.network = network
@@ -33,29 +32,38 @@ export class Extension {
         hashType: 'type',
         args: this.classId,
       },
-      'desc',
+      'asc',
       1,
     )
     if (!txs || txs.length === 0) {
       throw new Error('The transaction of creating class cells not found')
     }
-    const witness = await getTxLastWitnessByHash(this.ckbNode, txs[0].txHash)
-    try {
-      this.dataFormat = witnessJsonToDataFormat(witness)
-    } catch (error) {
-      throw new Error(error)
+    const transaction = await getTxByHash(this.ckbNode, txs[0].txHash)
+    const witness = transaction.witnesses[transaction.witnesses.length - 1]
+    const outputsData = transaction.outputsData[parseInt(txs[0].txIndex, 16)]
+    const jsonHash = hexToHash(witness)
+    const extensionFormat = parseExtInfoFromClassData(outputsData)
+    if (extensionFormat.hash !== jsonHash) {
+      throw new Error('The hash of class ext info is not same as witness json hash')
     }
   }
 
   public async getNftCells(): Promise<NFTComponents.NftCell[]> {
     const cells = await getCells(this.ckbIndexer, this.getNftType())
-    return cells.map(cell => ({
-      tokenId: cell.output.type?.args,
-      classId: parseClassId(cell.output.type?.args),
-      tid: parseTid(cell.output.type?.args),
-      lock: cell.output.lock,
-      characteristic: null,
-    }))
+    return cells.map(cell => {
+      const characteristic = parseCharacteristicFromNftData(cell.outputData)
+      return {
+        tokenId: cell.output.type?.args,
+        classId: parseClassId(cell.output.type?.args),
+        tid: parseTid(cell.output.type?.args),
+        lock: cell.output.lock,
+        characteristic: {
+          weight: characteristic[0],
+          background: characteristic[1],
+          texture: characteristic[2],
+        },
+      }
+    })
   }
 
   public async getNftTransactions(): Promise<NFTComponents.NftTx[]> {

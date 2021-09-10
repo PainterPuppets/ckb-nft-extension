@@ -1,6 +1,17 @@
-import fetch from 'node-fetch'
+import axios, { AxiosPromise } from 'axios'
 import CKB from '@nervosnetwork/ckb-sdk-core'
 import { append0x, toCamelCase } from './utils'
+
+const fetch = (url: string, data: any): AxiosPromise => {
+  return axios({
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+    },
+    data,
+    url,
+  })
+}
 
 export const getCells = async (
   ckbIndexer: string,
@@ -27,15 +38,8 @@ export const getCells = async (
   }
   const body = JSON.stringify(payload, null, '  ')
   try {
-    let res: any = await fetch(ckbIndexer, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body,
-    })
-    res = await res.json()
-    return toCamelCase<IndexerCell[]>(res.result.objects)
+    let res: any = await fetch(ckbIndexer, body)
+    return toCamelCase<IndexerCell[]>(res.data.result.objects)
   } catch (error) {
     console.error('error', error)
   }
@@ -50,7 +54,7 @@ export const getTransactions = async (
   let payload = {
     id: 1,
     jsonrpc: '2.0',
-    method: 'get_cells',
+    method: 'get_transactions',
     params: [
       {
         script: {
@@ -66,15 +70,8 @@ export const getTransactions = async (
   }
   const body = JSON.stringify(payload, null, '  ')
   try {
-    let res: any = await fetch(ckbIndexer, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body,
-    })
-    res = await res.json()
-    return toCamelCase<IndexerTx[]>(res.result.objects)
+    let res: any = await fetch(ckbIndexer, body)
+    return toCamelCase<IndexerTx[]>(res.data.result.objects)
   } catch (error) {
     console.error('error', error)
   }
@@ -89,12 +86,10 @@ export const getLiveCell = async (
   return cell
 }
 
-export const getTxLastWitnessByHash = async (ckbNode: string, txHash: HexString): Promise<HexString> => {
+export const getTxByHash = async (ckbNode: string, txHash: HexString): Promise<CKBComponents.Transaction> => {
   const ckb = new CKB(ckbNode)
-  const {
-    transaction: { witnesses },
-  } = await ckb.rpc.getTransaction(txHash)
-  return witnesses[-1]
+  const { transaction } = await ckb.rpc.getTransaction(txHash)
+  return transaction
 }
 
 export const getTimestampByBlockNumber = async (ckbNode: string, blockNumber: HexString): Promise<number> => {

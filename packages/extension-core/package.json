@@ -17,6 +17,11 @@
   },
   "dependencies": {
     "@nervina/extension-types": "0.1.0",
+    "axios": "^0.21.4",
     "tslib": "^2.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^16.9.1",
+    "rimraf": "^3.0.2"
   }
 }

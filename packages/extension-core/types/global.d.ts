@@ -42,7 +42,7 @@ interface IndexerCell {
   blockNumber: CKBComponents.BlockNumber
   outPoint: CKBComponents.OutPoint
   output: CKBComponents.CellOutput
-  outputData: HexString[]
+  outputData: HexString
   txIndex: HexString
 }
 

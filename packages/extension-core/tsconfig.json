@@ -2,12 +2,10 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "lib",
-    "lib": [
-      "es6",
-      "esnext.array"
-    ],
+    "rootDir": "src",
     "types": [
       "@nervina/extension-types",
+      "node"
     ],
     "typeRoots": [
       "@nervosnetwork/ckb-types",

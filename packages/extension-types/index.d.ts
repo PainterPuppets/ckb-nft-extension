@@ -19,4 +19,11 @@ declare namespace NFTComponents {
     lock: CKBComponents.Script
     outPoint: CKBComponents.OutPoint
   }
+
+  export type ExtensionProps = {
+    ckbNode: string
+    ckbIndexer: string
+    network: Network
+    classId: string
+  }
 }
