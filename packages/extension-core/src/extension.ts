@@ -5,7 +5,7 @@ import {
   TESTNET_CLASS_TYPE_CODE_HASH,
   TESTNET_NFT_TYPE_CODE_HASH,
 } from './constants'
-import { getCells, getLiveCell, getTimestampByBlockNumber, getTransactions, getTxByHash } from './rpc'
+import { getCells, getTimestampByBlockNumber, getTransactions, getTxByHash } from './rpc'
 
 const parseClassId = (tokenId: HexString): HexString => remove0x(tokenId).substring(0, 48)
 const parseTid = (tokenId: HexString): number => parseInt(remove0x(tokenId).substring(48), 16)
@@ -71,21 +71,21 @@ export class Extension {
     txs = txs.filter(tx => tx.ioType === 'output')
     let nftTxs: NFTComponents.NftTx[] = []
     for (const tx of txs) {
-      const outPoint = {
-        txHash: tx.txHash,
-        index: tx.ioIndex,
-      }
-      const cell = await getLiveCell(this.ckbNode, outPoint)
+      const transaction = await getTxByHash(this.ckbNode, tx.txHash)
       const timestamp = await getTimestampByBlockNumber(this.ckbNode, tx.blockNumber)
+      const output = transaction.outputs[parseInt(tx.ioIndex, 16)]
       nftTxs.push({
-        tokenId: cell.output.type?.args,
-        classId: parseClassId(cell.output.type?.args),
-        tid: parseTid(cell.output.type?.args),
+        tokenId: output?.type.args,
+        classId: parseClassId(output?.type.args),
+        tid: parseTid(output?.type.args),
         txHash: tx.txHash,
-        lock: cell.output.lock,
+        lock: output.lock,
         timestamp,
         blockNumber: tx.blockNumber,
-        outPoint,
+        outPoint: {
+          txHash: tx.txHash,
+          index: tx.ioIndex,
+        },
       })
     }
     return nftTxs

@@ -77,15 +77,6 @@ export const getTransactions = async (
   }
 }
 
-export const getLiveCell = async (
-  ckbNode: string,
-  outPoint: CKBComponents.OutPoint,
-): Promise<CKBComponents.LiveCell> => {
-  const ckb = new CKB(ckbNode)
-  const { cell } = await ckb.rpc.getLiveCell(outPoint, true)
-  return cell
-}
-
 export const getTxByHash = async (ckbNode: string, txHash: HexString): Promise<CKBComponents.Transaction> => {
   const ckb = new CKB(ckbNode)
   const { transaction } = await ckb.rpc.getTransaction(txHash)
