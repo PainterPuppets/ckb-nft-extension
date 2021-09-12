@@ -1,4 +1,5 @@
-import { hexToHash, parseCharacteristicFromNftData, parseExtInfoFromClassData, remove0x } from '.'
+import { remove0x } from './utils'
+import { hexToHash, parseCharacteristicFromNftData, parseExtInfoFromClassData } from './parser'
 import {
   MAINNET_CLASS_TYPE_CODE_HASH,
   MAINNET_NFT_TYPE_CODE_HASH,

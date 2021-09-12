@@ -1,18 +1,18 @@
 {
   "name": "ckb-nft-extension",
   "private": true,
-  "version": "0.1.0",
-  "description": "The extension of Nervos CKB NFT",
   "author": "duanyytop@gmail.com",
-  "license": "MIT",
   "workspaces": [
     "packages/*"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna run tsc",
     "clean:lib": "rimraf **/packages/*/lib",
-    "publish": "lerna run tsc && lerna publish --from-package",
+    "publish:prod": "lerna run tsc && lerna publish from-package",
     "lint": "eslint packages/**/*.ts --fix"
   },
   "dependencies": {

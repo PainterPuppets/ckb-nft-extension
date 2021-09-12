@@ -1,4 +1,4 @@
-const { Extension } = require('@nervina/extension-core')
+const { Extension } = require('@nervina/nft-extension-core')
 
 const run = async () => {
   const extension = new Extension({

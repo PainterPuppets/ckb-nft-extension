@@ -1,8 +1,9 @@
 {
-  "name": "@nervina/extension-core",
+  "name": "@nervina/nft-extension-core",
   "version": "0.1.0",
   "author": "duanyytop@gmail.com",
   "license": "MIT",
+  "private": false,
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "directories": {
@@ -12,16 +13,25 @@
     "lib",
     "types"
   ],
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org/",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duanyytop/ckb-nft-extension.git"
+  },
   "scripts": {
     "tsc": "tsc"
   },
   "dependencies": {
-    "@nervina/extension-types": "0.1.0",
+    "@nervina/nft-extension-types": "0.1.0",
     "axios": "^0.21.4",
     "tslib": "^2.3.1"
   },
   "devDependencies": {
     "@types/node": "^16.9.1",
     "rimraf": "^3.0.2"
-  }
+  },
+  "gitHead": "036ac423c1458a6214c191c4ac3f9f3a7cd3a962"
 }

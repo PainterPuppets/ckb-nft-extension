@@ -1,0 +1,24 @@
+{
+  "name": "@nervina/nft-extension-types",
+  "version": "0.1.0",
+  "author": "duanyytop@gmail.com",
+  "license": "MIT",
+  "private": false,
+  "types": "index.d.ts",
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org/",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duanyytop/ckb-nft-extension.git"
+  },
+  "dependencies": {
+    "@nervosnetwork/ckb-types": "^0.43.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.9.1",
+    "rimraf": "^3.0.2"
+  },
+  "gitHead": "036ac423c1458a6214c191c4ac3f9f3a7cd3a962"
+}

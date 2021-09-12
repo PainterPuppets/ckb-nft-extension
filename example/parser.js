@@ -1,4 +1,4 @@
-const { dataFormatToJsonHex, utf8ToHex, u16ToBe, hexToHash, remove0x } = require('@nervina/extension-core')
+const { dataFormatToJsonHex, utf8ToHex, u16ToBe, hexToHash, remove0x } = require('@nervina/nft-extension-core')
 
 const json = {
   type: {
