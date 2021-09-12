@@ -48,8 +48,8 @@ export class Extension {
     }
   }
 
-  public async getNftCells(): Promise<NFTComponents.NftCell[]> {
-    const cells = await getCells(this.ckbIndexer, this.getNftType())
+  public async getNftCells(order = 'asc', limit = 10): Promise<NFTComponents.NftCell[]> {
+    const cells = await getCells(this.ckbIndexer, this.getNftType(), order, limit)
     return cells.map(cell => {
       const characteristic = parseCharacteristicFromNftData(cell.outputData)
       return {
@@ -58,16 +58,14 @@ export class Extension {
         tid: parseTid(cell.output.type?.args),
         lock: cell.output.lock,
         characteristic: {
-          weight: characteristic[0],
-          background: characteristic[1],
-          texture: characteristic[2],
+          rarity: characteristic[0],
         },
       }
     })
   }
 
-  public async getNftTransactions(): Promise<NFTComponents.NftTx[]> {
-    let txs = await getTransactions(this.ckbIndexer, this.getNftType())
+  public async getNftTransactions(order = 'asc', limit = 10): Promise<NFTComponents.NftTx[]> {
+    let txs = await getTransactions(this.ckbIndexer, this.getNftType(), order, limit)
     txs = txs.filter(tx => tx.ioType === 'output')
     let nftTxs: NFTComponents.NftTx[] = []
     for (const tx of txs) {

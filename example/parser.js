@@ -2,40 +2,13 @@ const { dataFormatToJsonHex, utf8ToHex, u16ToBe, hexToHash, remove0x } = require
 
 const json = {
   type: {
-    enum: [
-      {
-        name: 'Background',
-        values: {
-          YELLOW: 0,
-          GREEN: 1,
-          RED: 2,
-        },
-      },
-      {
-        name: 'Texture',
-        values: {
-          YELLOW: 0,
-          GREEN: 1,
-          RED: 2,
-        },
-      },
-    ],
+    enum: [],
   },
   data: [
     {
-      name: 'weight',
+      name: 'rarity',
       type: 'UInt8',
       position: 0,
-    },
-    {
-      name: 'background',
-      type: 'Background',
-      position: 8,
-    },
-    {
-      name: 'texture',
-      type: 'Texture',
-      position: 16,
     },
   ],
 }
