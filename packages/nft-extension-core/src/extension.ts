@@ -6,7 +6,7 @@ import {
   TESTNET_CLASS_TYPE_CODE_HASH,
   TESTNET_NFT_TYPE_CODE_HASH,
 } from './constants'
-import { getCells, getTimestampByBlockNumber, getTransactions, getTxByHash } from './rpc'
+import { getCells, getTimestampByBlockNumber, getTipBlockHeight, getTransactions, getTxByHash } from './rpc'
 
 const parseClassId = (tokenId: HexString): HexString => remove0x(tokenId).substring(0, 48)
 const parseTid = (tokenId: HexString): number => parseInt(remove0x(tokenId).substring(48), 16)
@@ -88,6 +88,10 @@ export class Extension {
       })
     }
     return nftTxs
+  }
+
+  public async getTipBlockNumber(): Promise<number> {
+    return await getTipBlockHeight(this.ckbNode)
   }
 
   // Filter nft cells and txs by type script prefix

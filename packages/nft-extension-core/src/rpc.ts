@@ -90,3 +90,9 @@ export const getTimestampByBlockNumber = async (ckbNode: string, blockNumber: He
   } = await ckb.rpc.getBlockByNumber(blockNumber)
   return parseInt(timestamp)
 }
+
+export const getTipBlockHeight = async (ckbNode: string): Promise<number> => {
+  const ckb = new CKB(ckbNode)
+  const { number } = await ckb.rpc.getTipHeader()
+  return parseInt(number)
+}
