@@ -15,12 +15,6 @@
     "publish:prod": "lerna run tsc && lerna publish from-package",
     "lint": "eslint packages/**/*.ts --fix"
   },
-  "dependencies": {
-    "@nervosnetwork/ckb-sdk-core": "^0.43.0",
-    "@nervosnetwork/ckb-sdk-utils": "^0.43.0",
-    "@nervosnetwork/ckb-types": "^0.43.0",
-    "camelcase-keys": "^7.0.0"
-  },
   "devDependencies": {
     "@types/node": "^16.7.13",
     "@typescript-eslint/eslint-plugin": "^4.31.0",

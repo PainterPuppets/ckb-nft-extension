@@ -1,6 +1,6 @@
 {
   "name": "@nervina/nft-extension-core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "duanyytop@gmail.com",
   "license": "MIT",
   "private": false,
@@ -25,7 +25,11 @@
     "tsc": "tsc"
   },
   "dependencies": {
+    "@nervosnetwork/ckb-sdk-core": "^0.43.0",
+    "@nervosnetwork/ckb-sdk-utils": "^0.43.0",
+    "@nervosnetwork/ckb-types": "^0.43.0",
     "@nervina/nft-extension-types": "0.1.0",
+    "camelcase-keys": "^7.0.0",
     "axios": "^0.21.4",
     "tslib": "^2.3.1"
   },

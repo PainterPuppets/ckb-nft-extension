@@ -816,6 +816,13 @@
     npmlog "^4.1.2"
     write-file-atomic "^3.0.3"
 
+"@nervina/nft-extension-types@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@nervina/nft-extension-types/-/nft-extension-types-0.1.0.tgz#41b843951b107f95d5d6abb9559c4b75e4a93882"
+  integrity sha512-yp41Z5+4fKdabGQANLGympru/3s4UgnWYQfg6IjWXarQHwra9OHhlrPtcs9QB9PG6kuST/alXCUkuMPjf+SXog==
+  dependencies:
+    "@nervosnetwork/ckb-types" "^0.43.0"
+
 "@nervosnetwork/ckb-sdk-core@^0.43.0":
   version "0.43.0"
   resolved "https://registry.yarnpkg.com/@nervosnetwork/ckb-sdk-core/-/ckb-sdk-core-0.43.0.tgz#a99389fea60f5bda366e3a6085cd7bad7bc69427"

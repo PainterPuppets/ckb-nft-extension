@@ -20,6 +20,8 @@ declare namespace NFTComponents {
     outPoint: CKBComponents.OutPoint
   }
 
+  export type Network = 'mainnet' | 'testnet'
+
   export type ExtensionProps = {
     ckbNode: string
     ckbIndexer: string
