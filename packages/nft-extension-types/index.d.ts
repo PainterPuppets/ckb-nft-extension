@@ -28,4 +28,10 @@ declare namespace NFTComponents {
     network: Network
     classId: string
   }
+
+  export type MethodProps = {
+    order?: 'asc' | 'desc'
+    limit?: number
+    tid?: number
+  }
 }

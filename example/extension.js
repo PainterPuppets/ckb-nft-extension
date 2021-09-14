@@ -5,18 +5,22 @@ const run = async () => {
     ckbNode: 'https://testnet.ckb.dev/rpc',
     ckbIndexer: 'https://testnet.ckb.dev/indexer',
     network: 'testnet',
-    classId: '0x767023b5817307973f18a9a4f4a018fc5a03af5300000003',
+    classId: '0x3939ecec56db8161b6308c84d6f5f9f12d00d1f000000000',
   })
   await extension.init()
 
   const blockNumber = await extension.getTipBlockNumber()
   console.log(blockNumber)
 
-  const cells = await extension.getNftCells()
+  const cells = await extension.getNftCells(0)
   console.log(JSON.stringify(cells))
 
-  const txs = await extension.getNftTransactions()
+  console.log(JSON.stringify(await extension.getNftCells()))
+
+  const txs = await extension.getNftTransactions(1)
   console.log(JSON.stringify(txs))
+
+  console.log(JSON.stringify(await extension.getNftTransactions()))
 }
 
 run()

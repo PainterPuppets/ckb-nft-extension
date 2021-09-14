@@ -7,6 +7,7 @@ import {
   TESTNET_NFT_TYPE_CODE_HASH,
 } from './constants'
 import { getCells, getTimestampByBlockNumber, getTipBlockHeight, getTransactions, getTxByHash } from './rpc'
+import { u32ToBe } from '.'
 
 const parseClassId = (tokenId: HexString): HexString => remove0x(tokenId).substring(0, 48)
 const parseTid = (tokenId: HexString): number => parseInt(remove0x(tokenId).substring(48), 16)
@@ -49,8 +50,8 @@ export class Extension {
     }
   }
 
-  public async getNftCells(order = 'asc', limit = 10): Promise<NFTComponents.NftCell[]> {
-    const cells = await getCells(this.ckbIndexer, this.getNftType(), order, limit)
+  public async getNftCells(tid = undefined, order = 'asc', limit = 10): Promise<NFTComponents.NftCell[]> {
+    const cells = await getCells(this.ckbIndexer, this.getNftType(tid), order, limit)
     return cells.map(cell => {
       const characteristic = parseCharacteristicFromNftData(cell.outputData)
       return {
@@ -65,8 +66,8 @@ export class Extension {
     })
   }
 
-  public async getNftTransactions(order = 'asc', limit = 10): Promise<NFTComponents.NftTx[]> {
-    let txs = await getTransactions(this.ckbIndexer, this.getNftType(), order, limit)
+  public async getNftTransactions(tid = undefined, order = 'asc', limit = 10): Promise<NFTComponents.NftTx[]> {
+    let txs = await getTransactions(this.ckbIndexer, this.getNftType(tid), order, limit)
     txs = txs.filter(tx => tx.ioType === 'output')
     let nftTxs: NFTComponents.NftTx[] = []
     for (const tx of txs) {
@@ -95,11 +96,12 @@ export class Extension {
   }
 
   // Filter nft cells and txs by type script prefix
-  private getNftType(): CKBComponents.Script {
+  private getNftType(tid?: number): CKBComponents.Script {
+    const args = tid !== undefined ? `${this.classId}${u32ToBe(tid)}` : this.classId
     return {
       codeHash: this.network === 'mainnet' ? MAINNET_NFT_TYPE_CODE_HASH : TESTNET_NFT_TYPE_CODE_HASH,
       hashType: 'type',
-      args: this.classId,
+      args,
     }
   }
 }
