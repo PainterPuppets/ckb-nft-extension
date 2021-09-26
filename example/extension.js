@@ -5,7 +5,10 @@ const run = async () => {
     ckbNode: 'https://testnet.ckb.dev/rpc',
     ckbIndexer: 'https://testnet.ckb.dev/indexer',
     network: 'testnet',
-    classId: '0x3939ecec56db8161b6308c84d6f5f9f12d00d1f000000000',
+    classIds: [
+      '0x3939ecec56db8161b6308c84d6f5f9f12d00d1f000000000',
+      '0x3939ecec56db8161b6308c84d6f5f9f12d00d1f000000001',
+    ],
   })
   await extension.init()
 
