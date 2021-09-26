@@ -26,7 +26,7 @@ declare namespace NFTComponents {
     ckbNode: string
     ckbIndexer: string
     network: Network
-    classIds: [string]
+    classIds: string[]
   }
 
   export type MethodProps = {

@@ -16,7 +16,7 @@ export class Extension {
   private ckbNode: string
   private ckbIndexer: string
   private network: Network
-  private classIds: [HexString]
+  private classIds: HexString[]
 
   public constructor({ ckbNode, ckbIndexer, network, classIds }: NFTComponents.ExtensionProps) {
     this.ckbNode = ckbNode
