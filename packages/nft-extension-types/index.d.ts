@@ -7,6 +7,7 @@ declare namespace NFTComponents {
     tid: number
     characteristic: object
     lock: CKBComponents.Script
+    data: string
   }
 
   export type NftTx = {

@@ -12,18 +12,18 @@ const run = async () => {
   })
   await extension.init()
 
-  const blockNumber = await extension.getTipBlockNumber()
-  console.log(blockNumber)
+  // const blockNumber = await extension.getTipBlockNumber()
+  // console.log(blockNumber)
 
   const cells = await extension.getNftCells(0)
   console.log(JSON.stringify(cells))
 
-  console.log(JSON.stringify(await extension.getNftCells()))
+  // console.log(JSON.stringify(await extension.getNftCells()))
 
-  const txs = await extension.getNftTransactions(1)
-  console.log(JSON.stringify(txs))
+  // const txs = await extension.getNftTransactions(1)
+  // console.log(JSON.stringify(txs))
 
-  console.log(JSON.stringify(await extension.getNftTransactions()))
+  // console.log(JSON.stringify(await extension.getNftTransactions()))
 }
 
 run()

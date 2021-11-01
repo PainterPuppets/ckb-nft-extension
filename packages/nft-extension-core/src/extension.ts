@@ -68,6 +68,7 @@ export class Extension {
             characteristic: {
               rarity: characteristic[0],
             },
+            data: cell.outputData,
           }
         }),
       )
