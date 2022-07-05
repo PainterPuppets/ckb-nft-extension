@@ -5,15 +5,15 @@ The extension of Nervos CKB NFT
 ## Quick Start
 
 ```
-yarn add @nervina/nft-extension-core
+yarn add @painterpuppets/nft-extension-core
 ```
 
 ## Modules
 
 The repo root which organized via monorepo mode, that composed of the following modules
 
-- @nervina/nft-extension-core - The core SDK used to interact with Nervos CKB NFT extension
-- @nervina/nft-extension-types - The TypeScript definitions
+- @painterpuppets/nft-extension-core - The core SDK used to interact with Nervos CKB NFT extension
+- @painterpuppets/nft-extension-types - The TypeScript definitions
 
 ## Examples
 

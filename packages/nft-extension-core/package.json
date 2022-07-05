@@ -1,5 +1,5 @@
 {
-  "name": "@nervina/nft-extension-core",
+  "name": "@painterpuppets/nft-extension-core",
   "version": "0.1.7",
   "author": "duanyytop@gmail.com",
   "license": "MIT",
@@ -25,10 +25,10 @@
     "tsc": "tsc"
   },
   "dependencies": {
-    "@nervina/nft-extension-types": "^0.1.7",
     "@nervosnetwork/ckb-sdk-core": "^0.43.0",
     "@nervosnetwork/ckb-sdk-utils": "^0.43.0",
     "@nervosnetwork/ckb-types": "^0.43.0",
+    "@painterpuppets/nft-extension-types": "^0.1.7",
     "axios": "^0.21.4",
     "camelcase-keys": "^7.0.0",
     "tslib": "^2.3.1"
@@ -36,6 +36,5 @@
   "devDependencies": {
     "@types/node": "^16.9.1",
     "rimraf": "^3.0.2"
-  },
-  "gitHead": "6d1ef82cd008b90e17ecd80decaed28182bf8303"
+  }
 }

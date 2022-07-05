@@ -4,12 +4,12 @@
     "outDir": "lib",
     "rootDir": "src",
     "types": [
-      "@nervina/nft-extension-types",
+      "@painterpuppets/nft-extension-types",
       "node"
     ],
     "typeRoots": [
       "@nervosnetwork/ckb-types",
-      "@nervina/nft-extension-types",
+      "@painterpuppets/nft-extension-types",
       "types"
     ],
   },

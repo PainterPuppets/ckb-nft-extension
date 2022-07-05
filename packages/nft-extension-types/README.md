@@ -1,3 +1,3 @@
-# @nervina/nft-extension-types
+# @painterpuppets/nft-extension-types
 
 The TypeScript definitions

@@ -1,4 +1,4 @@
-const { Extension } = require('@nervina/nft-extension-core')
+const { Extension } = require('@painterpuppets/nft-extension-core')
 
 const run = async () => {
   const extension = new Extension({

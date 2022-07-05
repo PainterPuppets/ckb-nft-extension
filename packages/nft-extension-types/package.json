@@ -1,5 +1,5 @@
 {
-  "name": "@nervina/nft-extension-types",
+  "name": "@painterpuppets/nft-extension-types",
   "version": "0.1.7",
   "author": "duanyytop@gmail.com",
   "license": "MIT",
@@ -19,6 +19,5 @@
   "devDependencies": {
     "@types/node": "^16.9.1",
     "rimraf": "^3.0.2"
-  },
-  "gitHead": "6d1ef82cd008b90e17ecd80decaed28182bf8303"
+  }
 }
